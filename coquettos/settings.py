@@ -11,7 +11,11 @@ SECRET_KEY = 'coquettos-peluqueria-canina-alhama-de-murcia-super-secret-key-2024
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '.pythonanywhere.com',   # ← PythonAnywhere (cualquier subdominio)
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
