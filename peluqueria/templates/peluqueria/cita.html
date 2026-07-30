@@ -1,0 +1,125 @@
+{% extends 'peluqueria/base.html' %}
+{% load static %}
+
+{% block title %}Reservar Cita{% endblock %}
+
+{% block content %}
+
+<section class="page-hero" aria-labelledby="cita-titulo">
+  <div class="container">
+    <span class="badge-rosa" style="display:inline-block;margin-bottom:1.2rem">📅 Fácil y rápido</span>
+    <h1 id="cita-titulo">Reservar Cita</h1>
+    <p>Rellena el formulario y te llamamos para confirmar. ¡Así de sencillo!</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="cita-form-titulo">
+  <div class="container">
+    <div class="form-section">
+      <div style="text-align:center;margin-bottom:2.5rem" class="reveal">
+        <h2 id="cita-form-titulo" style="font-family:'Pacifico',cursive;font-size:2rem;color:var(--morado)">
+          Pide cita para tu peludo 🐾
+        </h2>
+        <p style="color:var(--gris-texto)">También puedes llamarnos directamente: <a href="tel:619439803" style="color:var(--rosa);font-weight:700">619 43 98 03</a></p>
+      </div>
+
+      <div class="form-card reveal">
+        <form method="post" action="{% url 'cita' %}" novalidate id="cita-form" aria-label="Formulario de reserva de cita">
+          {% csrf_token %}
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="{{ form.nombre_dueno.id_for_label }}">
+                👤 Tu nombre *
+              </label>
+              {{ form.nombre_dueno }}
+              {% if form.nombre_dueno.errors %}
+              <ul class="errorlist" role="alert">{% for e in form.nombre_dueno.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="{{ form.telefono.id_for_label }}">
+                📞 Teléfono *
+              </label>
+              {{ form.telefono }}
+              {% if form.telefono.errors %}
+              <ul class="errorlist" role="alert">{% for e in form.telefono.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="{{ form.nombre_mascota.id_for_label }}">
+                🐕 Nombre de la mascota *
+              </label>
+              {{ form.nombre_mascota }}
+              {% if form.nombre_mascota.errors %}
+              <ul class="errorlist" role="alert">{% for e in form.nombre_mascota.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="{{ form.raza_mascota.id_for_label }}">
+                🦮 Raza
+              </label>
+              {{ form.raza_mascota }}
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="{{ form.servicio.id_for_label }}">
+                ✂️ Servicio deseado *
+              </label>
+              {{ form.servicio }}
+              {% if form.servicio.errors %}
+              <ul class="errorlist" role="alert">{% for e in form.servicio.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="{{ form.fecha_hora.id_for_label }}">
+                📅 Fecha y hora *
+              </label>
+              {{ form.fecha_hora }}
+              {% if form.fecha_hora.errors %}
+              <ul class="errorlist" role="alert">{% for e in form.fecha_hora.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="{{ form.notas.id_for_label }}">
+              📝 Notas adicionales
+            </label>
+            {{ form.notas }}
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1.1rem;padding:1rem" id="cita-submit">
+            📅 Solicitar Cita
+          </button>
+        </form>
+      </div>
+
+      <!-- Info adicional -->
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;margin-top:2rem" class="reveal">
+        <div style="background:white;border-radius:16px;padding:1.5rem;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.06)">
+          <div style="font-size:2rem;margin-bottom:0.5rem">📞</div>
+          <strong style="color:var(--morado)">Te llamamos</strong>
+          <p style="color:var(--gris-texto);font-size:0.9rem;margin-top:0.3rem">para confirmar tu cita</p>
+        </div>
+        <div style="background:white;border-radius:16px;padding:1.5rem;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.06)">
+          <div style="font-size:2rem;margin-bottom:0.5rem">⚡</div>
+          <strong style="color:var(--morado)">Rápido y sencillo</strong>
+          <p style="color:var(--gris-texto);font-size:0.9rem;margin-top:0.3rem">sin esperas innecesarias</p>
+        </div>
+        <div style="background:white;border-radius:16px;padding:1.5rem;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.06)">
+          <div style="font-size:2rem;margin-bottom:0.5rem">🐾</div>
+          <strong style="color:var(--morado)">Trato personalizado</strong>
+          <p style="color:var(--gris-texto);font-size:0.9rem;margin-top:0.3rem">para cada mascota</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

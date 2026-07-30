@@ -1,0 +1,449 @@
+{% extends 'peluqueria/base.html' %}
+{% load static %}
+
+{% block title %}Coquettos Peluquería Canina — Alhama de Murcia{% endblock %}
+{% block og_title %}Coquettos Peluquería Canina — Belleza y amor para tu mascota{% endblock %}
+
+{% block content %}
+
+<!-- ══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+<section class="hero" id="inicio" aria-label="Presentación Coquettos">
+  <div class="hero-particles" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-eyebrow" aria-label="Establecimiento">
+          <span>⭐ 4,9 en Google</span>
+          <span style="opacity:0.5">·</span>
+          <span>Alhama de Murcia</span>
+        </div>
+
+        <h1 class="hero-title">
+          Belleza y amor
+          <span class="highlight">para tu peludo</span>
+        </h1>
+
+        <p class="hero-desc">
+          En <strong>Coquettos</strong> tratamos a cada mascota como si fuera la nuestra. 
+          Más de 14 años de experiencia, productos premium y un trato lleno de cariño. 
+          <em>Más que belleza, creamos confianza.</em>
+        </p>
+
+        <div class="hero-actions">
+          <a href="{% url 'cita' %}" class="btn btn-primary" id="hero-cta-cita">
+            📅 Pedir Cita
+          </a>
+          <a href="tel:619439803" class="btn btn-blanco" id="hero-cta-tel">
+            📞 619 43 98 03
+          </a>
+        </div>
+
+        <div class="hero-stats" aria-label="Estadísticas">
+          <div class="stat">
+            <span class="stat-number" data-target="14">0</span>
+            <span class="stat-label">Años de experiencia</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="4.9">0</span>
+            <span class="stat-label">Puntuación Google</span>
+          </div>
+          <div class="stat">
+            <span class="stat-number" data-target="26">0</span>
+            <span class="stat-label">Reseñas felices</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-image" aria-hidden="true">
+        <div class="hero-img-wrapper">
+          <img src="{{ MEDIA_URL }}fotos/coquettos.jpg"
+               alt="Coquettos Peluquería Canina — Banner oficial"
+               width="520" height="320" loading="eager">
+
+          <div class="hero-badge badge-1" aria-hidden="true">
+            🐾 ¡Tu peludo nos encanta!
+          </div>
+          <div class="hero-badge badge-2" aria-hidden="true">
+            💕 Trato con amor
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SERVICIOS
+═══════════════════════════════════════ -->
+<section class="section" id="servicios-home" aria-labelledby="servicios-titulo">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="badge-rosa">Nuestros servicios</span>
+      <h2 class="section-title" id="servicios-titulo" style="margin-top:1rem">
+        Lo que hacemos por tu <span>mascota</span>
+      </h2>
+      <p class="section-subtitle">
+        Cada servicio está diseñado para que tu peludo se sienta como en casa... 
+        ¡pero más guapo!
+      </p>
+    </div>
+
+    {% if servicios %}
+    <div class="servicios-grid">
+      {% for servicio in servicios %}
+      <article class="servicio-card reveal reveal-delay-{{ forloop.counter }}" aria-label="{{ servicio.nombre }}">
+        <span class="servicio-icono" aria-hidden="true">{{ servicio.icono }}</span>
+        <h3 class="servicio-nombre">{{ servicio.nombre }}</h3>
+        <p class="servicio-desc">{{ servicio.descripcion }}</p>
+        {% if servicio.precio_desde %}
+        <span class="servicio-precio">Desde {{ servicio.precio_desde }}€</span>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Servicios por defecto si no hay BD -->
+    <div class="servicios-grid">
+      <article class="servicio-card reveal reveal-delay-1">
+        <span class="servicio-icono">✂️</span>
+        <h3 class="servicio-nombre">Corte y Peinado</h3>
+        <p class="servicio-desc">Cortes de raza estándar o personalizados con técnicas de última generación para un aspecto impecable.</p>
+      </article>
+      <article class="servicio-card reveal reveal-delay-2">
+        <span class="servicio-icono">🛁</span>
+        <h3 class="servicio-nombre">Baño y Aseo Premium</h3>
+        <p class="servicio-desc">Mantenemos a tu mascota limpia y brillante con productos de alta calidad que cuidan su piel y pelaje.</p>
+      </article>
+      <article class="servicio-card reveal reveal-delay-3">
+        <span class="servicio-icono">💅</span>
+        <h3 class="servicio-nombre">Corte de Uñas</h3>
+        <p class="servicio-desc">El cuidado de uñas es esencial para la salud de tu mascota. Lo hacemos de forma segura y sin molestias.</p>
+      </article>
+      <article class="servicio-card reveal reveal-delay-4">
+        <span class="servicio-icono">💆</span>
+        <h3 class="servicio-nombre">Tratamientos Spa</h3>
+        <p class="servicio-desc">Desde baños de hidromasaje hasta masajes relajantes, tu peludo se sentirá mimado y relajado.</p>
+      </article>
+    </div>
+    {% endif %}
+
+    <div class="text-center reveal" style="margin-top:3rem">
+      <a href="{% url 'servicios' %}" class="btn btn-outline" id="ver-todos-servicios">Ver todos los servicios →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     GALERÍA HOME PREVIEW
+═══════════════════════════════════════ -->
+<section class="section section-alt" id="galeria-home" aria-labelledby="galeria-home-titulo">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="badge-rosa">Nuestros clientes</span>
+      <h2 class="section-title" id="galeria-home-titulo" style="margin-top:1rem">
+        Conoce a nuestros <span>peludos VIP</span>
+      </h2>
+      <p class="section-subtitle">
+        Cada uno con su personalidad única. ¡Todos salen guapísimos de Coquettos!
+      </p>
+    </div>
+
+    {% if clientes %}
+    <div class="galeria-grid">
+      {% for cliente in clientes %}
+      <div class="galeria-item reveal reveal-delay-{{ forloop.counter }}"
+           data-lightbox
+           data-src="{{ cliente.foto.url }}"
+           data-caption="{{ cliente.nombre }}{% if cliente.raza %} — {{ cliente.raza }}{% endif %}"
+           role="button"
+           tabindex="0"
+           aria-label="Ver foto de {{ cliente.nombre }}">
+        <img src="{{ cliente.foto.url }}"
+             alt="Foto de {{ cliente.nombre }}{% if cliente.raza %}, {{ cliente.raza }}{% endif %}"
+             loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">{{ cliente.nombre }}</span>
+          {% if cliente.raza %}<span class="galeria-raza">{{ cliente.raza }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Galería estática con las fotos reales -->
+    <div class="galeria-grid">
+      <div class="galeria-item reveal reveal-delay-1" data-lightbox data-src="{{ MEDIA_URL }}fotos/briana.jpg" data-caption="Briana — Pomerania" role="button" tabindex="0" aria-label="Ver foto de Briana">
+        <img src="{{ MEDIA_URL }}fotos/briana.jpg" alt="Briana, Pomerania clienta de Coquettos" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Briana</span>
+          <span class="galeria-raza">Pomerania</span>
+        </div>
+      </div>
+      <div class="galeria-item reveal reveal-delay-2" data-lightbox data-src="{{ MEDIA_URL }}fotos/doker.jpg" data-caption="Doker — Bichón" role="button" tabindex="0" aria-label="Ver foto de Doker">
+        <img src="{{ MEDIA_URL }}fotos/doker.jpg" alt="Doker, Bichón cliente de Coquettos" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Doker</span>
+          <span class="galeria-raza">Bichón</span>
+        </div>
+      </div>
+      <div class="galeria-item reveal reveal-delay-3" data-lightbox data-src="{{ MEDIA_URL }}fotos/odin.jpg" data-caption="Odín — Pomerania blanco" role="button" tabindex="0" aria-label="Ver foto de Odín">
+        <img src="{{ MEDIA_URL }}fotos/odin.jpg" alt="Odín, Pomerania blanco cliente de Coquettos" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Odín</span>
+          <span class="galeria-raza">Pomerania</span>
+        </div>
+      </div>
+      <div class="galeria-item reveal reveal-delay-4" data-lightbox data-src="{{ MEDIA_URL }}fotos/snausser.jpg" data-caption="Snausser — Schnauzer" role="button" tabindex="0" aria-label="Ver foto de Snausser">
+        <img src="{{ MEDIA_URL }}fotos/snausser.jpg" alt="Snausser, Schnauzer cliente de Coquettos" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Snausser</span>
+          <span class="galeria-raza">Schnauzer</span>
+        </div>
+      </div>
+      <div class="galeria-item reveal reveal-delay-4" data-lightbox data-src="{{ MEDIA_URL }}fotos/tobi.jpg" data-caption="Tobi — Yorkshire Terrier" role="button" tabindex="0" aria-label="Ver foto de Tobi">
+        <img src="{{ MEDIA_URL }}fotos/tobi.jpg" alt="Tobi, Yorkshire Terrier cliente de Coquettos" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Tobi</span>
+          <span class="galeria-raza">Yorkshire Terrier</span>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="text-center reveal" style="margin-top:3rem">
+      <a href="{% url 'galeria' %}" class="btn btn-outline" id="ver-galeria-completa">Ver galería completa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     🦸 SECCIÓN KOKILLO — EL SUPERHÉROE
+═══════════════════════════════════════ -->
+<section class="kokillo-section" id="kokillo" aria-labelledby="kokillo-titulo">
+  <div class="kokillo-stars" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="kokillo-header reveal">
+      <span class="badge-rosa" style="margin-bottom:1.5rem;display:inline-block">⚡ Rincón Especial</span>
+      <h2 class="kokillo-titulo" id="kokillo-titulo">Kokillo, el Súperhéroe 🦸</h2>
+      <p class="kokillo-subtitulo">
+        Cliente VIP de Isa que además de estar siempre impecable, tiene una vida secreta:<br>
+        ¡practica inglés y lucha por las croquetas como el héroe que es!
+      </p>
+    </div>
+
+    <div class="kokillo-badges reveal" aria-label="Características de Kokillo">
+      <div class="k-badge k-badge-heroe">🦸 Súperhéroe</div>
+      <div class="k-badge k-badge-ingles">🇬🇧 English Speaker</div>
+      <div class="k-badge k-badge-croquetas">🦴 Defensor de las Croquetas</div>
+      <div class="k-badge k-badge-vip">💜 Cliente VIP de Isa</div>
+    </div>
+
+    <div class="kokillo-videos">
+      <!-- VIDEO 1: Inglés -->
+      <div class="video-card reveal reveal-delay-1">
+        <div class="video-header">
+          <p class="video-numero">Episodio 1 · El Multilingüe</p>
+          <h3 class="video-titulo">🇬🇧 Kokillo Practicando Inglés</h3>
+          <p class="video-desc">
+            Kokillo demuestra sus impresionantes habilidades lingüísticas. 
+            ¡Este perro no solo está guapo, también es inteligente!
+          </p>
+        </div>
+        <div class="video-wrapper">
+          <video controls preload="metadata"
+                 aria-label="Vídeo de Kokillo practicando inglés"
+                 id="video-ingles">
+            <source src="{{ MEDIA_URL }}videos/Koki practicando ingles.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de vídeo.
+          </video>
+        </div>
+      </div>
+
+      <!-- VIDEO 2: Súperhéroe -->
+      <div class="video-card reveal reveal-delay-2">
+        <div class="video-header">
+          <p class="video-numero">Episodio 2 · El Héroe</p>
+          <h3 class="video-titulo">⚡ Koki a Luchar por las Croquetas</h3>
+          <p class="video-desc">
+            Cuando se trata de defender sus croquetas, Kokillo saca su lado más heroico. 
+            ¡Nada ni nadie puede con él!
+          </p>
+        </div>
+        <div class="video-wrapper">
+          <video controls preload="metadata"
+                 aria-label="Vídeo de Kokillo luchando por las croquetas como súperhéroe"
+                 id="video-heroe">
+            <source src="{{ MEDIA_URL }}videos/Koki A Luchar por las croquetas.mp4" type="video/mp4">
+            Tu navegador no soporta la reproducción de vídeo.
+          </video>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensaje de Kokillo a Isa -->
+    <div class="text-center reveal" style="margin-top:3rem">
+      <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:20px;padding:2rem;max-width:600px;margin:0 auto;backdrop-filter:blur(10px);">
+        <p style="color:rgba(255,255,255,0.9);font-size:1.05rem;font-style:italic;margin-bottom:1rem">
+          "Isa me cuida tan bien que tengo energía para aprender inglés Y salvar el mundo.
+          Pero siempre vuelvo a Coquettos... porque aquí huelo fenomenal. 🐾"
+        </p>
+        <p style="color:var(--turquesa);font-weight:800;font-size:1.1rem">— Kokillo, cliente de lujo</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     SOBRE ISA
+═══════════════════════════════════════ -->
+<section class="isa-section" id="sobre-isa" aria-labelledby="isa-titulo">
+  <div class="container">
+    <div class="isa-grid">
+      <div class="isa-fotos reveal">
+        <div class="isa-foto principal">
+          <img src="{{ MEDIA_URL }}fotos/isa.jpg" alt="Isa, peluquera canina de Coquettos, con una de sus mascotas" loading="lazy">
+        </div>
+        <div class="isa-foto">
+          <img src="{{ MEDIA_URL }}fotos/isa2.jpg" alt="Isa celebrando 14 años de Coquettos con una mascota" loading="lazy">
+        </div>
+        <div class="isa-anios" aria-label="14 años de experiencia">
+          <span class="num">14</span>
+          <span class="text">años de amor</span>
+        </div>
+      </div>
+
+      <div class="isa-contenido reveal reveal-delay-2">
+        <span class="badge-rosa" style="margin-bottom:1.5rem;display:inline-block">Sobre nosotros</span>
+        <h2 id="isa-titulo">Hola, soy <span>Isa</span> 👋</h2>
+        <p>
+          Soy peluquera canina profesional con más de <strong>14 años de experiencia</strong> 
+          cuidando y embelleciendo mascotas en Alhama de Murcia. Para mí cada perro 
+          es especial y merece el mejor cuidado.
+        </p>
+        <p>
+          En <strong>Coquettos</strong> no solo cortamos pelo: creamos vínculos de confianza 
+          con cada familia. Tu mascota estará siempre en manos expertas y llenas de amor.
+        </p>
+
+        <ul class="isa-features">
+          <li>
+            <span>🏆</span>
+            <span>Peluquera profesional certificada</span>
+          </li>
+          <li>
+            <span>⭐</span>
+            <span>4,9 estrellas con 26 reseñas en Google</span>
+          </li>
+          <li>
+            <span>💕</span>
+            <span>Trato individual y personalizado para cada mascota</span>
+          </li>
+          <li>
+            <span>🌿</span>
+            <span>Productos de alta calidad para piel y pelaje</span>
+          </li>
+          <li>
+            <span>📍</span>
+            <span>C. Río Turia, 8 — Alhama de Murcia</span>
+          </li>
+        </ul>
+
+        <a href="{% url 'cita' %}" class="btn btn-blanco" id="isa-cta-cita" style="color:var(--morado)">
+          📅 Pedir cita con Isa
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     RESEÑAS
+═══════════════════════════════════════ -->
+<section class="section resenas-section" id="resenas" aria-labelledby="resenas-titulo">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="badge-rosa">Lo que dicen nuestros clientes</span>
+      <h2 class="section-title" id="resenas-titulo" style="margin-top:1rem">
+        4,9 ⭐ en <span>Google</span>
+      </h2>
+      <p class="section-subtitle">
+        26 familias felices avalan nuestro trabajo. ¡Únete a la familia Coquettos!
+      </p>
+    </div>
+
+    {% if resenas %}
+    <div class="resenas-grid">
+      {% for resena in resenas %}
+      <article class="resena-card reveal" aria-label="Reseña de {{ resena.nombre_cliente }}">
+        <div class="resena-estrellas" aria-label="{{ resena.puntuacion }} estrellas">
+          {% for i in resena.estrellas_lista %}<span class="estrella-llena" aria-hidden="true">★</span>{% endfor %}
+          {% for i in resena.estrellas_vacias %}<span class="estrella-vacia" aria-hidden="true">★</span>{% endfor %}
+        </div>
+        <p class="resena-texto">{{ resena.texto }}</p>
+        <strong class="resena-autor">— {{ resena.nombre_cliente }}</strong>
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <!-- Reseñas de ejemplo -->
+    <div class="resenas-grid">
+      <article class="resena-card reveal">
+        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <p class="resena-texto">"¡Increíble! Mi Briana sale siempre preciosa de Coquettos. Isa tiene unas manos mágicas y un trato excepcional. ¡100% recomendable!"</p>
+        <strong class="resena-autor">— María García</strong>
+      </article>
+      <article class="resena-card reveal reveal-delay-1">
+        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <p class="resena-texto">"Llevamos a Kokillo desde hace años y siempre sale contentísimo. El trato es maravilloso, casi como familia. ¡Coquettos es lo mejor de Alhama!"</p>
+        <strong class="resena-autor">— Carlos Martínez</strong>
+      </article>
+      <article class="resena-card reveal reveal-delay-2">
+        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <p class="resena-texto">"El mejor sitio para tu peludo sin duda. Isa se preocupa de verdad por los animales. Odín sale siempre como un rey. ¡Gracias Coquettos!"</p>
+        <strong class="resena-autor">— Ana Sánchez</strong>
+      </article>
+      <article class="resena-card reveal reveal-delay-3">
+        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <p class="resena-texto">"Snausser es muy nervioso pero con Isa está tranquilísimo. Tiene un don especial con los animales. El corte siempre perfecto. ¡Lo recomiendo!"</p>
+        <strong class="resena-autor">— José Fernández</strong>
+      </article>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CTA FINAL
+═══════════════════════════════════════ -->
+<section class="cta-section" id="cta-final" aria-labelledby="cta-titulo">
+  <div class="container">
+    <h2 class="cta-title reveal" id="cta-titulo">
+      ¿Listo para que tu peludo<br>luzca espectacular?
+    </h2>
+    <p class="cta-desc reveal">
+      Reserva tu cita ahora y descubre por qué somos la peluquería canina 
+      de confianza en Alhama de Murcia.
+    </p>
+    <div class="reveal">
+      <a href="tel:619439803" class="cta-phone" id="cta-telefono" aria-label="Llamar al 619 43 98 03">
+        📞 619 43 98 03
+      </a>
+    </div>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap" class="reveal">
+      <a href="{% url 'cita' %}" class="btn btn-blanco" id="cta-btn-cita" style="color:var(--rosa)">📅 Reservar Cita Online</a>
+      <a href="https://wa.me/34619439803?text=Hola!%20Quiero%20pedir%20cita%20en%20Coquettos" 
+         class="btn" 
+         style="background:rgba(255,255,255,0.15);color:white;border:2px solid rgba(255,255,255,0.3)"
+         target="_blank" rel="noopener"
+         id="cta-btn-whatsapp"
+         aria-label="Contactar por WhatsApp">
+        💬 WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

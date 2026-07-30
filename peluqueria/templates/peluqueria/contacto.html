@@ -1,0 +1,144 @@
+{% extends 'peluqueria/base.html' %}
+{% load static %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block content %}
+
+<section class="page-hero" aria-labelledby="contacto-titulo">
+  <div class="container">
+    <span class="badge-rosa" style="display:inline-block;margin-bottom:1.2rem">📞 Estamos aquí</span>
+    <h1 id="contacto-titulo">Contáctanos</h1>
+    <p>¿Tienes alguna pregunta? Escríbenos o llámanos. ¡Estaremos encantados de ayudarte!</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="contacto-info-titulo">
+  <div class="container">
+    <h2 id="contacto-info-titulo" class="sr-only">Información de contacto y formulario</h2>
+    <div class="contacto-grid">
+
+      <!-- Info -->
+      <div class="reveal">
+        <div class="info-card">
+          <h3 style="font-family:'Pacifico',cursive;color:var(--morado);font-size:1.5rem;margin-bottom:1.5rem">
+            Dónde encontrarnos 📍
+          </h3>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">📍</div>
+            <div class="info-text">
+              <strong>Dirección</strong>
+              <span>C. Río Turia, 8<br>30840 Alhama de Murcia, Murcia</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">📞</div>
+            <div class="info-text">
+              <strong>Teléfono</strong>
+              <a href="tel:619439803" aria-label="Llamar al 619 43 98 03">619 43 98 03</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">⏰</div>
+            <div class="info-text">
+              <strong>Horario</strong>
+              <span>Lunes – Sábado: 9:00 – 20:00<br>Domingo: Cerrado</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon" aria-hidden="true">⭐</div>
+            <div class="info-text">
+              <strong>Valoración Google</strong>
+              <span>4,9 / 5 con 26 reseñas</span>
+            </div>
+          </div>
+
+          <!-- Botones de acción rápida -->
+          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-top:0.5rem">
+            <a href="tel:619439803" class="btn btn-primary" style="justify-content:center" id="contacto-btn-llamar">
+              📞 Llamar ahora
+            </a>
+            <a href="https://wa.me/34619439803?text=Hola!%20Me%20gustaría%20información%20sobre%20Coquettos"
+               class="btn btn-outline"
+               style="justify-content:center"
+               target="_blank" rel="noopener"
+               id="contacto-btn-whatsapp"
+               aria-label="Abrir WhatsApp">
+              💬 WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Mapa Google Maps -->
+        <div class="mapa-wrapper reveal" style="margin-top:1.5rem">
+          <iframe
+            title="Ubicación de Coquettos Peluquería Canina en Google Maps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3173.5!2d-1.423!3d37.845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd63b8b6a4c91b8b%3A0x1234567890abcdef!2sCoquettos%20Peluquer%C3%ADa%20Canina%2C%20C.%20R%C3%ADo%20Turia%2C%208%2C%2030840%20Alhama%20de%20Murcia!5e0!3m2!1ses!2ses!4v1234567890"
+            width="100%"
+            height="280"
+            style="border:0;border-radius:20px"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="reveal reveal-delay-2">
+        <div class="form-card">
+          <h3 style="font-family:'Pacifico',cursive;color:var(--morado);font-size:1.5rem;margin-bottom:0.5rem">
+            Envíanos un mensaje ✉️
+          </h3>
+          <p style="color:var(--gris-texto);margin-bottom:2rem;font-size:0.95rem">
+            Te respondemos lo antes posible. ¡Prometido!
+          </p>
+
+          <form method="post" action="{% url 'contacto' %}" novalidate id="contacto-form" aria-label="Formulario de contacto">
+            {% csrf_token %}
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="{{ form.nombre.id_for_label }}">👤 Tu nombre *</label>
+                {{ form.nombre }}
+                {% if form.nombre.errors %}
+                <ul class="errorlist" role="alert">{% for e in form.nombre.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+                {% endif %}
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="{{ form.email.id_for_label }}">📧 Email</label>
+                {{ form.email }}
+                {% if form.email.errors %}
+                <ul class="errorlist" role="alert">{% for e in form.email.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+                {% endif %}
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="{{ form.telefono.id_for_label }}">📞 Teléfono</label>
+              {{ form.telefono }}
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="{{ form.mensaje.id_for_label }}">💬 Mensaje *</label>
+              {{ form.mensaje }}
+              {% if form.mensaje.errors %}
+              <ul class="errorlist" role="alert">{% for e in form.mensaje.errors %}<li>{{ e }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;font-size:1.05rem;padding:0.95rem" id="contacto-submit">
+              ✉️ Enviar Mensaje
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

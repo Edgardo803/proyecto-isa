@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Coquettos Peluquería Canina en Alhama de Murcia. Corte, baño, uñas y spa para tu mascota. Más de 14 años de experiencia. Tel: 619 43 98 03">
+  <meta name="keywords" content="peluquería canina, Alhama de Murcia, baño perros, corte pelo perros, spa mascotas, Coquettos">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="{% block og_title %}Coquettos Peluquería Canina — Alhama de Murcia{% endblock %}">
+  <meta property="og:description" content="Belleza, cuidado y amor para tu mejor amigo. 4,9 ⭐ en Google.">
+  <meta property="og:type" content="website">
+  <title>{% block title %}Coquettos Peluquería Canina{% endblock %} | Alhama de Murcia</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Menú principal">
+    <div class="container">
+      <div class="navbar-inner">
+        <a href="{% url 'home' %}" class="navbar-brand" aria-label="Ir a inicio">
+          <div>
+            <div class="navbar-logo">🐾 Coquettos</div>
+            <span class="navbar-logo"><span>Peluquería Canina</span></span>
+          </div>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-menu">
+          <span></span><span></span><span></span>
+        </button>
+
+        <ul class="navbar-nav" id="nav-menu" role="menubar">
+          <li role="none"><a href="{% url 'home' %}" class="nav-link" role="menuitem">🏠 Inicio</a></li>
+          <li role="none"><a href="{% url 'servicios' %}" class="nav-link" role="menuitem">✂️ Servicios</a></li>
+          <li role="none"><a href="{% url 'galeria' %}" class="nav-link" role="menuitem">📸 Galería</a></li>
+          <li role="none"><a href="{% url 'contacto' %}" class="nav-link" role="menuitem">📞 Contacto</a></li>
+          <li role="none"><a href="{% url 'cita' %}" class="nav-link nav-cta" role="menuitem" id="nav-reservar">📅 Reservar Cita</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MENSAJES DJANGO -->
+  {% if messages %}
+  <div class="messages-container" role="alert" aria-live="polite">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Cerrar">✕</button>
+      <img id="lightbox-img" src="" alt="Foto ampliada de mascota">
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">🐾 Coquettos</div>
+          <p>Más que belleza, creamos confianza. Cuidamos a tu mejor amigo con amor, profesionalidad y los mejores productos desde hace más de 14 años.</p>
+          <div class="footer-social">
+            <a href="tel:619439803" class="social-btn" aria-label="Llamar">📞</a>
+            <a href="https://wa.me/34619439803" class="social-btn" aria-label="WhatsApp" target="_blank" rel="noopener">💬</a>
+            <a href="https://maps.google.com/?q=C.+Río+Turia,+8,+30840+Alhama+de+Murcia" class="social-btn" aria-label="Ver en Google Maps" target="_blank" rel="noopener">📍</a>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Servicios</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'servicios' %}">✂️ Corte y peinado</a></li>
+            <li><a href="{% url 'servicios' %}">🛁 Baño y aseo</a></li>
+            <li><a href="{% url 'servicios' %}">💅 Corte de uñas</a></li>
+            <li><a href="{% url 'servicios' %}">💆 Tratamientos Spa</a></li>
+            <li><a href="{% url 'cita' %}">📅 Reservar Cita</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="footer-title">Contacto</h3>
+          <div class="footer-contact-item">
+            <span>📍</span>
+            <span>C. Río Turia, 8<br>30840 Alhama de Murcia</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>📞</span>
+            <a href="tel:619439803" style="color:inherit">619 43 98 03</a>
+          </div>
+          <div class="footer-contact-item">
+            <span>⏰</span>
+            <span>Lun–Sáb: 9:00–20:00<br>Dom: Cerrado</span>
+          </div>
+          <div class="footer-contact-item">
+            <span>⭐</span>
+            <span>4,9 / 5 en Google<br>(26 reseñas)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 <strong>Coquettos Peluquería Canina</strong> · Todos los derechos reservados</p>
+        <p>Hecho con 🐾 y mucho amor en Alhama de Murcia · <a href="{% url 'contacto' %}">Contacto</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

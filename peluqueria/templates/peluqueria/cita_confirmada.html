@@ -1,0 +1,76 @@
+{% extends 'peluqueria/base.html' %}
+{% load static %}
+
+{% block title %}¡Cita Solicitada! 🎉{% endblock %}
+
+{% block content %}
+
+<section class="page-hero" style="background:linear-gradient(135deg,#0a3d0a 0%,#128C7E 50%,#25D366 100%);" aria-labelledby="confirmacion-titulo">
+  <div class="container">
+    <div style="font-size:4rem;margin-bottom:1rem" aria-hidden="true">🎉</div>
+    <h1 id="confirmacion-titulo">¡Cita solicitada!</h1>
+    <p>Los datos de <strong>{{ mascota }}</strong> han quedado guardados. Ahora envíaselos a Isa por WhatsApp:</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="whatsapp-titulo">
+  <div class="container">
+    <div style="max-width:560px;margin:0 auto;text-align:center">
+
+      <!-- Tarjeta principal -->
+      <div class="form-card reveal" style="border-top:6px solid #25D366">
+
+        <div style="font-size:5rem;margin-bottom:1rem" aria-hidden="true">📲</div>
+
+        <h2 id="whatsapp-titulo" style="font-family:'Pacifico',cursive;color:var(--morado);font-size:1.8rem;margin-bottom:0.75rem">
+          ¡Un paso más!
+        </h2>
+        <p style="color:var(--gris-texto);margin-bottom:2rem;font-size:1.05rem">
+          Pulsa el botón para enviarle a <strong>Isa</strong> los datos de la cita 
+          directamente por WhatsApp. ¡En segundos lo tiene!
+        </p>
+
+        {% if whatsapp_url %}
+        <a href="{{ whatsapp_url }}"
+           class="btn btn-primary"
+           style="background:linear-gradient(135deg,#128C7E,#25D366);box-shadow:0 4px 20px rgba(37,211,102,0.4);font-size:1.15rem;padding:1rem 2.5rem;width:100%;justify-content:center;margin-bottom:1rem"
+           target="_blank"
+           rel="noopener"
+           id="btn-abrir-whatsapp"
+           aria-label="Abrir WhatsApp para enviar la solicitud de cita a Isa">
+          💬 Abrir WhatsApp con Isa
+        </a>
+        {% endif %}
+
+        <p style="font-size:0.85rem;color:var(--gris-texto)">
+          Se abrirá WhatsApp con el mensaje ya redactado. Solo tienes que pulsar <strong>Enviar</strong> ✅
+        </p>
+      </div>
+
+      <!-- Pasos explicativos -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem" class="reveal" aria-label="Pasos del proceso">
+        <div style="background:white;border-radius:16px;padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem" aria-hidden="true">1️⃣</div>
+          <strong style="color:var(--morado);font-size:0.9rem">Pulsas el botón</strong>
+        </div>
+        <div style="background:white;border-radius:16px;padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem" aria-hidden="true">2️⃣</div>
+          <strong style="color:var(--morado);font-size:0.9rem">Envías el mensaje a Isa</strong>
+        </div>
+        <div style="background:white;border-radius:16px;padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,0.06);text-align:center">
+          <div style="font-size:2rem;margin-bottom:0.5rem" aria-hidden="true">3️⃣</div>
+          <strong style="color:var(--morado);font-size:0.9rem">¡Isa te confirma!</strong>
+        </div>
+      </div>
+
+      <!-- Botones de navegación -->
+      <div style="display:flex;gap:1rem;justify-content:center;margin-top:2.5rem;flex-wrap:wrap" class="reveal">
+        <a href="{% url 'home' %}" class="btn btn-outline" id="confirmacion-btn-inicio">🏠 Volver al inicio</a>
+        <a href="tel:619439803" class="btn btn-primary" id="confirmacion-btn-llamar">📞 Llamar a Isa</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock %}

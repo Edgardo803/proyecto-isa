@@ -1,0 +1,128 @@
+{% extends 'peluqueria/base.html' %}
+{% load static %}
+
+{% block title %}Galería de Peludos VIP{% endblock %}
+
+{% block content %}
+
+<section class="page-hero" aria-labelledby="galeria-page-titulo">
+  <div class="container">
+    <span class="badge-rosa" style="display:inline-block;margin-bottom:1.2rem">📸 Nuestros clientes</span>
+    <h1 id="galeria-page-titulo">Galería de Peludos VIP</h1>
+    <p>Cada foto cuenta una historia de cuidado, amor y mucho estilo. ¡Haz clic para ampliar!</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="galeria-lista-titulo">
+  <div class="container">
+    <h2 id="galeria-lista-titulo" class="sr-only">Fotos de los clientes de Coquettos</h2>
+
+    {% if clientes %}
+    <div class="galeria-grid">
+      {% for cliente in clientes %}
+      <div class="galeria-item reveal"
+           data-lightbox
+           data-src="{{ cliente.foto.url }}"
+           data-caption="{{ cliente.nombre }}{% if cliente.raza %} — {{ cliente.raza }}{% endif %}"
+           role="button"
+           tabindex="0"
+           aria-label="Ver foto de {{ cliente.nombre }}">
+        <img src="{{ cliente.foto.url }}"
+             alt="Foto de {{ cliente.nombre }}{% if cliente.raza %}, {{ cliente.raza }}{% endif %}"
+             loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">{{ cliente.nombre }}</span>
+          {% if cliente.raza %}<span class="galeria-raza">{{ cliente.raza }}</span>{% endif %}
+          {% if cliente.descripcion %}<span style="color:rgba(255,255,255,0.7);font-size:0.8rem;margin-top:0.3rem">{{ cliente.descripcion }}</span>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% else %}
+    <!-- Galería estática con todas las fotos reales -->
+    <div class="galeria-grid">
+      <div class="galeria-item reveal reveal-delay-1"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/briana.jpg" data-caption="Briana — Pomerania"
+           role="button" tabindex="0" aria-label="Ver foto de Briana">
+        <img src="{{ MEDIA_URL }}fotos/briana.jpg" alt="Briana, Pomerania clienta de Coquettos Peluquería Canina" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Briana</span>
+          <span class="galeria-raza">Pomerania</span>
+        </div>
+      </div>
+
+      <div class="galeria-item reveal reveal-delay-2"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/doker.jpg" data-caption="Doker — Bichón"
+           role="button" tabindex="0" aria-label="Ver foto de Doker">
+        <img src="{{ MEDIA_URL }}fotos/doker.jpg" alt="Doker, Bichón cliente de Coquettos Peluquería Canina" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Doker</span>
+          <span class="galeria-raza">Bichón</span>
+        </div>
+      </div>
+
+      <div class="galeria-item reveal reveal-delay-3"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/odin.jpg" data-caption="Odín — Pomerania blanco"
+           role="button" tabindex="0" aria-label="Ver foto de Odín">
+        <img src="{{ MEDIA_URL }}fotos/odin.jpg" alt="Odín, Pomerania blanco cliente de Coquettos Peluquería Canina" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Odín</span>
+          <span class="galeria-raza">Pomerania Blanco</span>
+        </div>
+      </div>
+
+      <div class="galeria-item reveal reveal-delay-4"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/snausser.jpg" data-caption="Snausser — Schnauzer"
+           role="button" tabindex="0" aria-label="Ver foto de Snausser">
+        <img src="{{ MEDIA_URL }}fotos/snausser.jpg" alt="Snausser, Schnauzer cliente de Coquettos Peluquería Canina" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Snausser</span>
+          <span class="galeria-raza">Schnauzer Gigante</span>
+        </div>
+      </div>
+
+      <div class="galeria-item reveal reveal-delay-1"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/tobi.jpg" data-caption="Tobi — Yorkshire Terrier"
+           role="button" tabindex="0" aria-label="Ver foto de Tobi">
+        <img src="{{ MEDIA_URL }}fotos/tobi.jpg" alt="Tobi, Yorkshire Terrier cliente de Coquettos Peluquería Canina" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Tobi</span>
+          <span class="galeria-raza">Yorkshire Terrier</span>
+        </div>
+      </div>
+
+      <div class="galeria-item reveal reveal-delay-2"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/isa.jpg" data-caption="Isa con una de sus mascotas favoritas"
+           role="button" tabindex="0" aria-label="Ver foto de Isa">
+        <img src="{{ MEDIA_URL }}fotos/isa.jpg" alt="Isa, peluquera canina de Coquettos, con una mascota" loading="lazy">
+        <div class="galeria-overlay">
+          <span class="galeria-nombre">Isa y su peludo</span>
+          <span class="galeria-raza">💕 Nuestra peluquera</span>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <!-- Sección especial Kokillo -->
+    <div class="text-center reveal" style="margin-top:5rem;padding:3rem;background:linear-gradient(135deg,#16002e,#2a0050);border-radius:24px">
+      <h3 style="font-family:'Pacifico',cursive;font-size:2rem;color:var(--turquesa);margin-bottom:1rem">
+        ⚡ ¿Buscas a Kokillo el Súperhéroe?
+      </h3>
+      <p style="color:rgba(255,255,255,0.8);margin-bottom:2rem">
+        Kokillo tiene su propio rincón especial en la página principal con sus vídeos épicos
+      </p>
+      <a href="{% url 'home' %}#kokillo" class="btn btn-primary" id="galeria-btn-kokillo">Ver a Kokillo en Acción 🦸</a>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center reveal" style="margin-top:4rem">
+      <p style="font-size:1.1rem;color:var(--gris-texto);margin-bottom:1.5rem">
+        ¿Tu mascota quiere salir en nuestra galería? ¡Pide cita y lo hacemos!
+      </p>
+      <a href="{% url 'cita' %}" class="btn btn-primary" id="galeria-btn-cita">📅 Pedir Cita</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

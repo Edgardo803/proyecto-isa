@@ -1,0 +1,91 @@
+{% extends 'peluqueria/base.html' %}
+{% load static %}
+
+{% block title %}Servicios{% endblock %}
+
+{% block content %}
+
+<section class="page-hero" aria-labelledby="servicios-page-titulo">
+  <div class="container">
+    <span class="badge-rosa" style="display:inline-block;margin-bottom:1.2rem">✂️ Lo que ofrecemos</span>
+    <h1 id="servicios-page-titulo">Nuestros Servicios</h1>
+    <p>Cada servicio pensado con amor para que tu peludo esté siempre en su mejor versión</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="servicios-lista-titulo">
+  <div class="container">
+    <h2 id="servicios-lista-titulo" class="sr-only">Lista de servicios disponibles</h2>
+    {% if servicios %}
+    <div class="servicios-grid">
+      {% for servicio in servicios %}
+      <article class="servicio-card reveal reveal-delay-{{ forloop.counter }}" aria-label="{{ servicio.nombre }}">
+        <span class="servicio-icono" aria-hidden="true">{{ servicio.icono }}</span>
+        <h3 class="servicio-nombre">{{ servicio.nombre }}</h3>
+        <p class="servicio-desc">{{ servicio.descripcion }}</p>
+        {% if servicio.precio_desde %}
+        <span class="servicio-precio" aria-label="Precio desde {{ servicio.precio_desde }} euros">Desde {{ servicio.precio_desde }}€</span>
+        {% endif %}
+      </article>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="servicios-grid">
+      <article class="servicio-card reveal reveal-delay-1">
+        <span class="servicio-icono">✂️</span>
+        <h3 class="servicio-nombre">Corte y Peinado</h3>
+        <p class="servicio-desc">Ya sea un corte de raza estándar o algo más personalizado, nuestro equipo de peluqueros está capacitado para hacerlo. Utilizamos técnicas de última generación para dar a tu mascota un aspecto impecable.</p>
+        <span class="servicio-precio">Consultar precio</span>
+      </article>
+      <article class="servicio-card reveal reveal-delay-2">
+        <span class="servicio-icono">🛁</span>
+        <h3 class="servicio-nombre">Baño y Aseo</h3>
+        <p class="servicio-desc">Mantén a tu mascota limpia y fresca con nuestros servicios de baño y aseo. Utilizamos productos de alta calidad que cuidan la piel y el pelaje, dejándola con un aspecto saludable y brillante.</p>
+        <span class="servicio-precio">Consultar precio</span>
+      </article>
+      <article class="servicio-card reveal reveal-delay-3">
+        <span class="servicio-icono">💅</span>
+        <h3 class="servicio-nombre">Corte de Uñas</h3>
+        <p class="servicio-desc">El cuidado adecuado de las uñas es esencial para la salud de tu mascota. Nuestros expertos se encargarán del corte de uñas de manera segura y sin causar molestias a tu peludo amigo.</p>
+        <span class="servicio-precio">Consultar precio</span>
+      </article>
+      <article class="servicio-card reveal reveal-delay-4">
+        <span class="servicio-icono">💆</span>
+        <h3 class="servicio-nombre">Tratamientos de Spa</h3>
+        <p class="servicio-desc">Ofrecemos una variedad de tratamientos de spa para consentir a tu mascota. Desde baños de hidromasaje hasta masajes relajantes, tu peludo amigo se sentirá mimado y relajado.</p>
+        <span class="servicio-precio">Consultar precio</span>
+      </article>
+      <article class="servicio-card reveal reveal-delay-1">
+        <span class="servicio-icono">🎀</span>
+        <h3 class="servicio-nombre">Accesorios y Complementos</h3>
+        <p class="servicio-desc">Lazos, pañuelos, perfumes exclusivos y más. Dale a tu mascota ese toque especial que la hará destacar y oler de maravilla durante días.</p>
+        <span class="servicio-precio">Consultar precio</span>
+      </article>
+      <article class="servicio-card reveal reveal-delay-2">
+        <span class="servicio-icono">🐾</span>
+        <h3 class="servicio-nombre">Pack Completo</h3>
+        <p class="servicio-desc">Baño + secado + corte + uñas + limpieza de oídos + perfume. El tratamiento más completo para que tu mascota luzca y huela impecable de la cabeza a los pies.</p>
+        <span class="servicio-precio">Precio especial</span>
+      </article>
+    </div>
+    {% endif %}
+
+    <!-- CTA -->
+    <div class="text-center reveal" style="margin-top:4rem">
+      <div style="background:white;border-radius:24px;padding:3rem;box-shadow:0 8px 32px rgba(233,30,140,0.1);max-width:600px;margin:0 auto">
+        <h3 style="font-family:'Pacifico',cursive;font-size:1.8rem;color:var(--morado);margin-bottom:1rem">
+          ¿Quieres pedir cita? 📅
+        </h3>
+        <p style="color:var(--gris-texto);margin-bottom:2rem">
+          Llámanos o reserva online. ¡Estamos encantados de atender a tu peludo!
+        </p>
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+          <a href="{% url 'cita' %}" class="btn btn-primary" id="servicios-btn-cita">📅 Reservar Cita</a>
+          <a href="tel:619439803" class="btn btn-outline" id="servicios-btn-tel">📞 619 43 98 03</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
