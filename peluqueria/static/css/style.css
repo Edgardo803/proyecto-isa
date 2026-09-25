@@ -733,7 +733,7 @@ img { max-width: 100%; display: block; }
 
 .resenas-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 
@@ -1195,6 +1195,9 @@ img { max-width: 100%; display: block; }
   .footer-grid { grid-template-columns: 1fr; }
   .footer-bottom { flex-direction: column; text-align: center; }
   .galeria-grid { grid-template-columns: repeat(2, 1fr); }
+  .resenas-grid { grid-template-columns: 1fr; }
+  .diplomas-grid { grid-template-columns: repeat(2, 1fr); }
+  .resena-especial { grid-column: 1; }
 }
 
 @media (max-width: 480px) {
