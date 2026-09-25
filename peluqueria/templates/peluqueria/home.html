@@ -376,6 +376,34 @@
 
     {% if resenas %}
     <div class="resenas-grid">
+      <!-- Reseña especial de la familia de Doker — siempre primera -->
+      <article class="resena-card resena-especial reveal" aria-label="Reseña especial de la familia de Docker">
+        <div class="badge-especial">💙 Reseña especial · Familia de Docker</div>
+        <div class="resena-estrellas" aria-label="5 estrellas">
+          <span class="estrella-llena">★</span><span class="estrella-llena">★</span>
+          <span class="estrella-llena">★</span><span class="estrella-llena">★</span>
+          <span class="estrella-llena">★</span>
+        </div>
+        <p class="resena-texto">
+          "Hay personas que llegan a tu vida y dejan huella, y sin duda Isa es una de ellas. ❤️
+          No solo es una profesional extraordinaria, de las mejores que hemos conocido, sino que tiene algo que
+          no se aprende en ninguna escuela: un corazón inmenso, una sensibilidad especial y un amor auténtico
+          por los animales. Docker ha tenido la inmensa suerte de encontrarla, y nosotros también.
+          Su cariño, su delicadeza y su manera de acompañarnos, especialmente ahora que estamos pasando por
+          un momento tan difícil con nuestro pequeño, no tienen precio. Isa no solo cuida de nuestros
+          peluditos, también cuida de las familias que hay detrás de ellos. Y eso la convierte en alguien
+          verdaderamente especial. Hay profesionales excelentes y hay personas maravillosas. Isa tiene la
+          suerte de ser las dos cosas. Un auténtico ángel en la tierra. Gracias por tanto, Isa."
+        </p>
+        <strong class="resena-autor">— Familia de Docker 🐾</strong>
+        <div class="doker-mini">
+          <img src="{{ MEDIA_URL }}fotos/Docker1.jpeg" alt="Docker" loading="lazy">
+          <span style="color:rgba(255,255,255,0.7);font-size:0.9rem;font-style:italic">
+            "Siempre tendrás un lugar muy especial en nuestros corazones y en el de Docker. 🐾"
+          </span>
+        </div>
+      </article>
+
       {% for resena in resenas %}
       <article class="resena-card reveal" aria-label="Reseña de {{ resena.nombre_cliente }}">
         <div class="resena-estrellas" aria-label="{{ resena.puntuacion }} estrellas">
@@ -388,30 +416,232 @@
       {% endfor %}
     </div>
     {% else %}
-    <!-- Reseñas de ejemplo -->
+    <!-- Reseñas estáticas con la de Doker destacada -->
     <div class="resenas-grid">
+      <article class="resena-card resena-especial reveal" aria-label="Reseña especial de la familia de Docker">
+        <div class="badge-especial">💙 Reseña especial · Familia de Docker</div>
+        <div class="resena-estrellas" aria-label="5 estrellas">
+          <span class="estrella-llena">★</span><span class="estrella-llena">★</span>
+          <span class="estrella-llena">★</span><span class="estrella-llena">★</span>
+          <span class="estrella-llena">★</span>
+        </div>
+        <p class="resena-texto">
+          "Hay personas que llegan a tu vida y dejan huella, y sin duda Isa es una de ellas. ❤️ No solo es una
+          profesional extraordinaria, sino que tiene algo que no se aprende en ninguna escuela: un corazón
+          inmenso y un amor auténtico por los animales. Docker ha tenido la inmensa suerte de encontrarla.
+          Su cariño, su delicadeza y su manera de acompañarnos no tienen precio. Isa no solo cuida de
+          nuestros peluditos, también cuida de las familias. Un auténtico ángel en la tierra."
+        </p>
+        <strong class="resena-autor">— Familia de Docker 🐾</strong>
+        <div class="doker-mini">
+          <img src="{{ MEDIA_URL }}fotos/Docker1.jpeg" alt="Docker" loading="lazy">
+          <span style="color:rgba(255,255,255,0.7);font-size:0.9rem;font-style:italic">
+            "Siempre tendrás un lugar muy especial en nuestros corazones y en el de Docker. 🐾"
+          </span>
+        </div>
+      </article>
       <article class="resena-card reveal">
-        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <div class="resena-estrellas">★★★★★</div>
         <p class="resena-texto">"¡Increíble! Mi Briana sale siempre preciosa de Coquettos. Isa tiene unas manos mágicas y un trato excepcional. ¡100% recomendable!"</p>
         <strong class="resena-autor">— María García</strong>
       </article>
       <article class="resena-card reveal reveal-delay-1">
-        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <div class="resena-estrellas">★★★★★</div>
         <p class="resena-texto">"Llevamos a Kokillo desde hace años y siempre sale contentísimo. El trato es maravilloso, casi como familia. ¡Coquettos es lo mejor de Alhama!"</p>
         <strong class="resena-autor">— Carlos Martínez</strong>
       </article>
       <article class="resena-card reveal reveal-delay-2">
-        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
+        <div class="resena-estrellas">★★★★★</div>
         <p class="resena-texto">"El mejor sitio para tu peludo sin duda. Isa se preocupa de verdad por los animales. Odín sale siempre como un rey. ¡Gracias Coquettos!"</p>
         <strong class="resena-autor">— Ana Sánchez</strong>
       </article>
-      <article class="resena-card reveal reveal-delay-3">
-        <div class="resena-estrellas" aria-label="5 estrellas">★★★★★</div>
-        <p class="resena-texto">"Snausser es muy nervioso pero con Isa está tranquilísimo. Tiene un don especial con los animales. El corte siempre perfecto. ¡Lo recomiendo!"</p>
-        <strong class="resena-autor">— José Fernández</strong>
-      </article>
     </div>
     {% endif %}
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     💙 IN MEMORIAM DOCKER
+═══════════════════════════════════════ -->
+<section class="doker-section" id="docker" aria-labelledby="docker-titulo">
+  <div class="container">
+    <div class="doker-grid">
+      <div class="doker-fotos reveal">
+        <div class="doker-foto grande"
+             data-lightbox data-src="{{ MEDIA_URL }}fotos/Docker&Isa.jpeg"
+             data-caption="Isa con la carta de Docker — 'Personas especiales hacen la vida más bonita'"
+             role="button" tabindex="0" aria-label="Ver foto de Isa con la carta de Docker">
+          <img src="{{ MEDIA_URL }}fotos/Docker&Isa.jpeg"
+               alt="Isa sosteniendo la carta de despedida de Docker, rodeada de flores"
+               loading="lazy">
+        </div>
+        <div class="doker-foto carta"
+             data-lightbox data-src="{{ MEDIA_URL }}fotos/Docker1.jpeg"
+             data-caption="Para mi Isa... Con todo mi pequeño gran corazón, Tu Docker 🐾"
+             role="button" tabindex="0" aria-label="Ver carta de Docker para Isa">
+          <img src="{{ MEDIA_URL }}fotos/Docker1.jpeg"
+               alt="Carta de despedida de Docker para Isa"
+               loading="lazy">
+        </div>
+        <div class="doker-foto carta"
+             data-lightbox data-src="{{ MEDIA_URL }}fotos/doker.jpg"
+             data-caption="Docker — siempre en nuestros corazones 💙"
+             role="button" tabindex="0" aria-label="Ver foto de Docker">
+          <img src="{{ MEDIA_URL }}fotos/doker.jpg"
+               alt="Docker, Bichón cliente de Coquettos"
+               loading="lazy">
+        </div>
+      </div>
+
+      <div class="doker-texto reveal reveal-delay-2">
+        <p class="doker-subtitulo">In Memoriam · Siempre en nuestros corazones</p>
+        <h2 class="doker-titulo" id="docker-titulo">Para mi Isa... 💙</h2>
+        <div class="doker-cita">
+          "Yo no sé mucho de despedidas, pero sí sé reconocer a quien me quiere de verdad.
+          Y tú eres una de esas personas especiales que la vida puso en mi camino.
+          Qué suerte haberte encontrado. Gracias por seguir cerquita de mí y de mi familia,
+          también ahora, cuando más te necesitamos. Eres nuestro ángel en la tierra."
+        </div>
+        <p class="doker-firma">Con todo mi pequeño gran corazón, Tu Docker 🐾</p>
+        <p style="color:rgba(255,255,255,0.6);font-size:0.9rem;margin-top:1.5rem;line-height:1.8">
+          Su familia nos dedicó unas palabras que son mucho más que una reseña.
+          Son un testimonio de que en Coquettos no solo cuidamos peludos,
+          sino que acompañamos a las familias en cada momento.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     🏅 DIPLOMAS Y CERTIFICACIONES
+═══════════════════════════════════════ -->
+<section class="diplomas-section" id="certificaciones" aria-labelledby="diplomas-titulo">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="badge-rosa">Formación y experiencia</span>
+      <h2 class="section-title" id="diplomas-titulo" style="margin-top:1rem">
+        Diplomas y <span>Certificaciones</span>
+      </h2>
+      <p class="section-subtitle">
+        Isa no deja de formarse para ofrecerte siempre lo mejor. Aquí tienes su aval oficial:
+      </p>
+    </div>
+
+    <div class="diplomas-grid">
+      {% for num in "12345678910" %}{% endfor %}
+      <!-- Diplomas estáticos con las 11 imágenes reales -->
+      <div class="diploma-card reveal reveal-delay-1"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma1.jpeg"
+           data-caption="Peluquería y Estética Canina — Asociación Canina de la Comunidad Autónoma de Murcia"
+           role="button" tabindex="0" aria-label="Ver Diploma 1">
+        <img src="{{ MEDIA_URL }}fotos/Diploma1.jpeg" alt="Diploma Peluquería y Estética Canina" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 1</p>
+          <p class="diploma-nombre">Peluquería y Estética Canina</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-2"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma2.jpeg"
+           data-caption="Seminario de Cosmética y Dermatología Canina — ACCAM"
+           role="button" tabindex="0" aria-label="Ver Diploma 2">
+        <img src="{{ MEDIA_URL }}fotos/Diploma2.jpeg" alt="Diploma Cosmética y Dermatología Canina" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 2</p>
+          <p class="diploma-nombre">Cosmética y Dermatología Canina</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-3"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma3.jpeg"
+           data-caption="Atención al Cliente en Clínicas Veterinarias — Región de Murcia"
+           role="button" tabindex="0" aria-label="Ver Diploma 3">
+        <img src="{{ MEDIA_URL }}fotos/Diploma3.jpeg" alt="Diploma Atención al Cliente Veterinarias" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 3</p>
+          <p class="diploma-nombre">Atención al Cliente en Clínicas Veterinarias</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-4"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma4.jpeg"
+           data-caption="Certificación 4 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 4">
+        <img src="{{ MEDIA_URL }}fotos/Diploma4.jpeg" alt="Diploma 4 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 4</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma5.jpeg"
+           data-caption="Certificación 5 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 5">
+        <img src="{{ MEDIA_URL }}fotos/Diploma5.jpeg" alt="Diploma 5 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 5</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-1"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma6.jpeg"
+           data-caption="Certificación 6 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 6">
+        <img src="{{ MEDIA_URL }}fotos/Diploma6.jpeg" alt="Diploma 6 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 6</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-2"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma7.jpeg"
+           data-caption="Certificación 7 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 7">
+        <img src="{{ MEDIA_URL }}fotos/Diploma7.jpeg" alt="Diploma 7 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 7</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-3"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma8.jpeg"
+           data-caption="Certificación 8 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 8">
+        <img src="{{ MEDIA_URL }}fotos/Diploma8.jpeg" alt="Diploma 8 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 8</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-4"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma9.jpeg"
+           data-caption="Certificación 9 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 9">
+        <img src="{{ MEDIA_URL }}fotos/Diploma9.jpeg" alt="Diploma 9 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 9</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma10.jpeg"
+           data-caption="Certificación 10 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 10">
+        <img src="{{ MEDIA_URL }}fotos/Diploma10.jpeg" alt="Diploma 10 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 10</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+      <div class="diploma-card reveal reveal-delay-1"
+           data-lightbox data-src="{{ MEDIA_URL }}fotos/Diploma11.jpeg"
+           data-caption="Certificación 11 — Isabel Campos Sánchez"
+           role="button" tabindex="0" aria-label="Ver Diploma 11">
+        <img src="{{ MEDIA_URL }}fotos/Diploma11.jpeg" alt="Diploma 11 de Isa" loading="lazy">
+        <div class="diploma-footer">
+          <p class="diploma-num">Diploma 11</p>
+          <p class="diploma-nombre">Formación Especializada</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
