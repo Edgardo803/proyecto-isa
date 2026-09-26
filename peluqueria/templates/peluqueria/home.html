@@ -304,9 +304,6 @@
     <div class="isa-grid">
       <div class="isa-fotos reveal">
         <div class="isa-foto principal">
-          <img src="{{ MEDIA_URL }}fotos/isa.jpg" alt="Isa, peluquera canina de Coquettos, con una de sus mascotas" loading="lazy">
-        </div>
-        <div class="isa-foto">
           <img src="{{ MEDIA_URL }}fotos/isa2.jpg" alt="Isa celebrando 14 años de Coquettos con una mascota" loading="lazy">
         </div>
         <div class="isa-anios" aria-label="14 años de experiencia">
@@ -377,13 +374,13 @@
     {% if resenas %}
     <div class="resenas-grid">
       <!-- Reseña especial de la familia de Doker — siempre primera -->
-      <article class="resena-card resena-especial reveal" aria-label="Reseña especial de la familia de Docker">
-        <div class="badge-especial">💙 Reseña especial · Familia de Docker</div>
-        <div class="resena-estrellas" aria-label="5 estrellas">
-          <span class="estrella-llena">★</span><span class="estrella-llena">★</span>
-          <span class="estrella-llena">★</span><span class="estrella-llena">★</span>
-          <span class="estrella-llena">★</span>
+      <article class="resena-card resena-especial reveal"
+               style="grid-column:1/-1;background:linear-gradient(135deg,#6a1a9a,#3d0069);color:white;border:none;border-left:none;padding:2.5rem;position:relative;overflow:hidden;"
+               aria-label="Reseña especial de la familia de Docker">
+        <div style="display:inline-flex;align-items:center;gap:.4rem;background:#4ecdc4;color:#1a0030;font-weight:800;font-size:.8rem;padding:.3rem .9rem;border-radius:50px;text-transform:uppercase;letter-spacing:.05em;margin-bottom:1rem">
+          💙 Reseña especial · Familia de Docker
         </div>
+        <div style="font-size:1.3rem;margin-bottom:1rem;color:#ffd700" aria-label="5 estrellas">★★★★★</div>
         <p class="resena-texto">
           "Hay personas que llegan a tu vida y dejan huella, y sin duda Isa es una de ellas. ❤️
           No solo es una profesional extraordinaria, de las mejores que hemos conocido, sino que tiene algo que
