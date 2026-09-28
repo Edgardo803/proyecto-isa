@@ -15,6 +15,8 @@ ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
     '.pythonanywhere.com',   # ← PythonAnywhere (cualquier subdominio)
+    'coquettos.es',          # ← Dominio propio
+    'www.coquettos.es',      # ← Con www
 ]
 
 INSTALLED_APPS = [
