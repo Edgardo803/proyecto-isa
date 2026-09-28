@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: coquettos-peluqueria
+    env: python
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && python seed_data.py"
+    startCommand: "gunicorn coquettos.wsgi:application"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: coquettos.settings

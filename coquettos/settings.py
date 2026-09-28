@@ -14,9 +14,10 @@ DEBUG = True
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    '.pythonanywhere.com',   # ← PythonAnywhere (cualquier subdominio)
-    'coquettos.es',          # ← Dominio propio
-    'www.coquettos.es',      # ← Con www
+    '.pythonanywhere.com',      # ← PythonAnywhere
+    'coquettos.es',              # ← Dominio propio
+    'www.coquettos.es',          # ← Con www
+    '.onrender.com',             # ← Render (cualquier subdominio)
 ]
 
 INSTALLED_APPS = [
@@ -31,6 +32,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',   # ← sirve static files en Render
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,6 +83,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
